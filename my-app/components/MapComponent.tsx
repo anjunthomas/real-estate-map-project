@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import Map, { Source, Layer } from 'react-map-gl/mapbox';
+import Map, { Source, Layer,  } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { LayerProps } from 'react-map-gl/mapbox';
 
