@@ -1,7 +1,9 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { MuiNavbar } from "@/components/MuiNavbar";
 import { MuiDrawer} from "@/components/MuiDrawer";
+import { Providers } from "@/components/Providers";
 
 
 export const metadata: Metadata = {
@@ -17,13 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-            {/* Navbar content should go here*/}
-            <MuiNavbar/>
-            <MuiDrawer/>
-
-            {/* styling page here */}
-            <main style={{ padding: "1rem" }}></main>
-        {children}
+        <Providers>
+          <MuiNavbar />
+          <MuiDrawer />
+          <main style={{ padding: "1rem" }}>
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
