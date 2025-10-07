@@ -31,6 +31,7 @@ export default function MapComponent() {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (event: any) => {
     if (event.features && event.features.length > 0) {
       setParcelId(event.features[0].properties.ID);
