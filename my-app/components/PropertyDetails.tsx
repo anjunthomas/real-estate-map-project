@@ -2,8 +2,56 @@
 
 import { Box, Typography } from '@mui/material';
 
+interface PropertyData {
+  reonomyProperties?: {
+    items?: Array<{
+      parcel_id?: string;
+      property_id?: string;
+      address_line1?: string;
+      city?: string;
+      state?: string;
+      zip4?: string;
+      zip5?: string;
+      year_built?: number;
+      year_renovated?: number;
+      floors?: number;
+      sum_buildings_nbr?: number;
+      existing_floor_area_ratio?: number;
+      commercial_units?: number;
+      residential_units?: number;
+      total_units?: number;
+      building_area?: number;
+      sum_building_sqft?: number;
+      max_floor_plate?: number;
+      building_class?: string;
+      frontage?: number;
+      depth?: number;
+      asset_type?: string;
+      lot_size_sqft?: number;
+      lot_size_acres?: number;
+      zoning?: string;
+      lot_size_depth_feet?: number;
+      lot_size_frontage_feet?: number;
+      census_tract?: string;
+      opp_zone?: boolean;
+      msa_name?: string;
+      fips_county?: string;
+      municipality?: string;
+      borough_id?: number;
+      mcd_name?: string;
+      neighborhood_name?: string;
+      zoning_district_1?: string;
+      zoning_district_2?: string;
+      special_purpose_district?: string;
+      split_boundary?: boolean;
+      sanborn_map_number?: string;
+      zoning_map_number?: string;
+    }>;
+  };
+}
+
 interface PropertyDetailsProps {
-  data: any;
+  data: PropertyData;
 }
 
 const PropertyRow = ({ label, value }: { label: string; value: string | number | null | undefined }) => (
