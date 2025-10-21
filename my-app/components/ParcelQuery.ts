@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 
 export const GET_PARCEL_DETAILS = gql`
   query GetParcelDetails($parcelId: String!) {
-    reonomyProperties(where: { parcel_id: { _eq: $parcelId } }) {
+    reonomyProperties(filter: { parcel_id: { eq: $parcelId } }) {
       items {
         parcel_id
         property_id

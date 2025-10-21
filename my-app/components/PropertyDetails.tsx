@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Card } from '@mui/material';
 
 interface PropertyData {
   reonomyProperties?: {
@@ -59,29 +59,38 @@ const PropertyRow = ({ label, value }: { label: string; value: string | number |
     sx={{ 
       display: 'flex', 
       justifyContent: 'space-between', 
-      py: 1.5,
-      borderBottom: '1px solid #f0f0f0',
+      py: 2,
+      borderBottom: '1px solid #e8e8e8',
       '&:last-child': {
         borderBottom: 'none'
       }
     }}
   >
-    <Typography sx={{ color: '#666', fontSize: '14px' }}>
+    <Typography sx={{ color: '#000', fontSize: '15px', fontWeight: 400 }}>
       {label}
     </Typography>
-    <Typography sx={{ color: '#000', fontWeight: 500, fontSize: '14px', textAlign: 'right' }}>
+    <Typography sx={{ color: '#000', fontWeight: 500, fontSize: '15px', textAlign: 'right' }}>
       {value || '-'}
     </Typography>
   </Box>
 );
 
 const PropertySection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <Box sx={{ mb: 3, pb: 2, borderBottom: '1px solid #e0e0e0' }}>
-    <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, fontSize: '20px' }}>
+  <Card 
+    elevation={0} 
+    sx={{ 
+      mb: 2, 
+      p: 3,
+      backgroundColor: '#fff',
+      border: '1px solid #e8e8e8',
+      borderRadius: '8px'
+    }}
+  >
+    <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, fontSize: '20px', color: '#000' }}>
       {title}
     </Typography>
     {children}
-  </Box>
+  </Card>
 );
 
 export default function PropertyDetails({ data }: PropertyDetailsProps) {
@@ -104,7 +113,7 @@ export default function PropertyDetails({ data }: PropertyDetailsProps) {
   }
 
   return (
-    <Box>
+    <Box sx={{ backgroundColor: '#f5f5f5' }}>
       <PropertySection title="Building">
         <PropertyRow label="Year Built" value={property.year_built} />
         <PropertyRow label="Year Renovated" value={property.year_renovated} />

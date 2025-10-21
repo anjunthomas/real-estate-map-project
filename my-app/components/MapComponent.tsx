@@ -5,7 +5,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import Map, { Source, Layer } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import type { LayerProps } from 'react-map-gl/mapbox';
 import { useLazyQuery } from '@apollo/client';
 import { GET_PARCEL_DETAILS } from '@/components/ParcelQuery';
 import { Drawer, Typography, Box, CircularProgress, IconButton } from '@mui/material';
@@ -17,37 +16,63 @@ const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 export default function MapComponent() {
   const [parcelId, setParcelId] = useState<string | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   const [fetchParcelDetails, { loading, error, data }] = useLazyQuery(GET_PARCEL_DETAILS);
 
-  const handleClick = (event: any) => {
-    if (event.features && event.features.length > 0) {
-      const id = event.features[0].properties.ID;
-      setParcelId(id);
-      fetchParcelDetails({ variables: { parcelId: id } });
-      setIsDrawerOpen(true);
-    }
-  };
+  const handleClick = React.useCallback((event: any) => {
+    try {
+      if (!mapLoaded) {
+        console.log("Map not fully loaded yet, skipping click");
+        return;
+      }
 
-  const lineLayer: LayerProps = {
-    id: 'parcel-lines',
-    type: 'line',
-    'source-layer': 'attom-parcels',
-    paint: {
-      'line-color': '#000',
-      'line-width': 2
+      const map = event.target;
+      let features = [];
+      
+      try {
+        // Query the parcel-fills layer
+        features = map.queryRenderedFeatures(event.point, {
+          layers: ["parcel-fills"]
+        });
+      } catch (layerError) {
+        console.log("Layer-specific query failed:", layerError);
+        
+        // Fallback: query all features and filter by source
+        try {
+          const allFeatures = map.queryRenderedFeatures(event.point);
+          features = allFeatures.filter((f: any) => f.source === 'parcels');
+        } catch (allError) {
+          console.error("All features query failed:", allError);
+          return;
+        }
+      }
+      
+      if (features.length > 0) {
+        console.log("Full feature object:", features[0]);
+        console.log("Feature ID:", features[0].id);
+        console.log("Feature Properties:", features[0].properties);
+        
+        // Get the ID from properties
+        const clickedParcelId = features[0].properties?.ID;
+        
+        console.log("Clicked Parcel ID (maps to GraphQL parcel_id):", clickedParcelId);
+        
+        if (!clickedParcelId) {
+          console.error("No ID found in feature properties!");
+          return;
+        }
+        
+        setParcelId(clickedParcelId);
+        fetchParcelDetails({ variables: { parcelId: clickedParcelId } });
+        setIsDrawerOpen(true);
+      } else {
+        console.log("No parcel features found at click point");
+      }
+    } catch (error) {
+      console.error("Click handler error:", error);
     }
-  };
-
-  const fillLayer: LayerProps = {
-    id: 'parcel-fills',
-    type: 'fill',
-    'source-layer': 'attom-parcels',
-    paint: {
-      'fill-color': '#088',
-      'fill-opacity': 0.3
-    }
-  };
+  }, [mapLoaded, fetchParcelDetails]);
 
   return (
     <div>
@@ -60,8 +85,12 @@ export default function MapComponent() {
         }}
         style={{ width: '100%', height: '800px' }}
         mapStyle="mapbox://styles/mapbox/streets-v12"
-        interactiveLayerIds={['parcel-lines', 'parcel-fills']}
+        interactiveLayerIds={['parcel-fills']}
         onClick={handleClick}
+        onLoad={() => {
+          console.log("Map loaded!");
+          setMapLoaded(true);
+        }}
       >
         <Source
           id="parcels"
@@ -69,8 +98,24 @@ export default function MapComponent() {
           url="mapbox://svayser.parcel-boundaries"
           promoteId="ID"
         >
-          <Layer {...fillLayer} />
-          <Layer {...lineLayer} />
+          <Layer
+            id="parcel-fills"
+            type="fill"
+            source-layer="attom-parcels"
+            paint={{
+              'fill-color': '#088',
+              'fill-opacity': 0.3
+            }}
+          />
+          <Layer
+            id="parcel-lines"
+            type="line"
+            source-layer="attom-parcels"
+            paint={{
+              'line-color': '#000',
+              'line-width': 2
+            }}
+          />
         </Source>
       </Map>
 
