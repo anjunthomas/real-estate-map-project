@@ -1,12 +1,15 @@
 import MapComponent from '@/components/MapComponent';
+import { TaxAssessors } from '@/components/TestQuery';
 
 
 export default function Home() {
   return (
     <div>
-        <h1>Real Estate Mapping</h1>
+        <h1>This is the real estate project</h1>
         <MapComponent/>
 
+        <h2>Tax Assessors Data</h2>
+        <TaxAssessors />
     </div>
   );
 }
