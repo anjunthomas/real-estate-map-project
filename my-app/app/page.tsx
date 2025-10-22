@@ -1,4 +1,5 @@
 import MapComponent from '@/components/MapComponent';
+import { TaxAssessors } from '@/components/TestQuery';
 
 
 export default function Home() {
@@ -6,7 +7,6 @@ export default function Home() {
     <div>
         <h1>Real Estate Mapping</h1>
         <MapComponent/> 
-
     </div>
   );
 }
