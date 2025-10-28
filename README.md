@@ -1,10 +1,8 @@
-# real-estate-map-project
-
 # Real Estate Mapping Application
 
-An interactive map for real estate brokers to explore property parcels and view detailed information. Click any parcel to see building specs, lot details, zoning info, and more.
+An interactive map for to explore property parcels and view detailed information. Click any parcel to see building specs, lot details, zoning info, and more.
 
-![Main View](./public/screenshots/RealEstateHomePage.png)
+![Main View](/screenshots/RealEstateHomePage.png)
 *Interactive parcel map*
 
 **Live Demo:** [https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app](https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app)
@@ -15,7 +13,7 @@ An interactive map for real estate brokers to explore property parcels and view 
 - Hover effects for visual feedback
 - Full-screen map interface
 
-![Property Details](./public/screenshots/SidePanelView.png)
+![Property Details](/screenshots/SidePanelView.png)
 *Property details panel*
 
 ## Setup
@@ -35,25 +33,25 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Tech Stack
 
-**Mapbox GL JS** - Interactive mapping
+**Mapbox GL JS** : Interactive mapping
 - Created vector tilesets in Mapbox Studio by uploading parcel boundary data
 - Configured custom styling for fills and borders with hover states
 - [Mapbox Documentation](https://docs.mapbox.com/mapbox-gl-js/)
 
-**GraphQL + Apollo Client** - Data fetching
+**GraphQL + Apollo Client**  : Data fetching
 - Single endpoint for all property data
-- Only fetch what you need (no over-fetching)
+- Only fetch what you need (no over fetching)
 - Built-in caching for better performance
 - [Apollo Client Docs](https://www.apollographql.com/docs/react/)
 
-**Azure Data API Builder** - GraphQL server
+**Azure Data API Builder** : GraphQL server
 - Auto-generates GraphQL schema from database tables
 - Handles filtering and pagination out of the box
 - [Azure Data API Builder](https://learn.microsoft.com/en-us/azure/data-api-builder/)
 
-**Next.js + TypeScript** - Frontend framework
+**Next.js + TypeScript** : Frontend framework
 
-**Material-UI** - UI components
+**Material-UI** : UI components
 
 ## How It Works
 
@@ -64,7 +62,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Future Plans
 
-- **Address search** using Google Geocoding API - convert addresses to coordinates, then use `executeGetParcelByLocation` to find the parcel
+- **Address search** using Google Geocoding API : convert addresses to coordinates, then use `executeGetParcelByLocation` to find the parcel
   - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding)
 - Property filtering by type, year, size
 - Export data to CSV/PDF
