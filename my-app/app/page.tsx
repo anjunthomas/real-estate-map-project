@@ -1,12 +1,9 @@
 import MapComponent from '@/components/MapComponent';
-import { TaxAssessors } from '@/components/TestQuery';
-
 
 export default function Home() {
   return (
-    <div>
-        <h1>Real Estate Mapping</h1>
-        <MapComponent/> 
+    <div style={{ margin: 0, padding: 0 }}>
+      <MapComponent/> 
     </div>
   );
 }

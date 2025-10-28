@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
 import { MuiNavbar } from "@/components/MuiNavbar";
@@ -21,8 +20,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <MuiNavbar />
-          <MuiDrawer />
-          <main style={{ padding: "1rem" }}>
+          <main style={{ padding: "0", margin: "0" }}>
             {children}
           </main>
         </Providers>
