@@ -2,7 +2,7 @@
 
 An interactive map for to explore property parcels and view detailed information. Click any parcel to see building specs, lot details, zoning info, and more.
 
-![Main View](/screenshots/RealEstateHomePage.png)
+![Main View](screenshots/RealEstateHomePage.png)
 *Interactive parcel map*
 
 **Live Demo:** [https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app](https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app)
@@ -13,7 +13,7 @@ An interactive map for to explore property parcels and view detailed information
 - Hover effects for visual feedback
 - Full-screen map interface
 
-![Property Details](/screenshots/SidePanelView.png)
+![Property Details](screenshots/SidePanelView.png)
 *Property details panel*
 
 ## Setup
