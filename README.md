@@ -5,7 +5,7 @@ An interactive map to explore property parcels and view detailed information. Cl
 ![Main View](my-app/public/screenshots/RealEstateHomePage.png)
 *Interactive parcel map*
 
-**Live Demo:** [https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app](https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app)
+**Live Demo:** [[https://real-estate-map-project-54qbw2mjf-anjunthomas-projects.vercel.app](https://real-estate-map-project-git-main-anjunthomas-projects.vercel.app/)]
 
 ## Features
 
