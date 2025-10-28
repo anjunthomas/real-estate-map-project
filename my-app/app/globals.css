@@ -1,6 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-blue: #1976d2;
+  --primary-blue-dark: #0d47a1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,7 +21,9 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,8 +39,139 @@ a {
   text-decoration: none;
 }
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Drawer specific scrollbar */
+.MuiDrawer-paper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.MuiDrawer-paper::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+.MuiDrawer-paper::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 4px;
+}
+
+.MuiDrawer-paper::-webkit-scrollbar-thumb:hover {
+  background: #9e9e9e;
+}
+
+/* Map styling */
+.mapboxgl-canvas {
+  outline: none;
+}
+
+.mapboxgl-ctrl-group {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.mapboxgl-ctrl button {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.mapboxgl-ctrl-logo {
+  margin: 8px !important;
+}
+
+/* Improve map popup appearance */
+.mapboxgl-popup-content {
+  padding: 16px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  font-family: inherit !important;
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 20px !important;
+  padding: 4px 8px !important;
+  color: #757575 !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background-color: #f5f5f5 !important;
+  color: #212121 !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* Improve button interactions */
+button {
+  transition: all 0.2s ease;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+  background-size: 1000px 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+  
+  .mapboxgl-ctrl-group {
+    background: #2a2a2a !important;
+  }
+  
+  .mapboxgl-ctrl button {
+    color: #fff !important;
   }
 }
