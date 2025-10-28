@@ -1,6 +1,6 @@
 # Real Estate Mapping Application
 
-An interactive map for to explore property parcels and view detailed information. Click any parcel to see building specs, lot details, zoning info, and more.
+An interactive map to explore property parcels and view detailed information. Click any parcel to see building specs, lot details, zoning info, and more.
 
 ![Main View](my-app/public/screenshots/RealEstateHomePage.png)
 *Interactive parcel map*
@@ -11,7 +11,7 @@ An interactive map for to explore property parcels and view detailed information
 
 - Click parcels to view property details
 - Hover effects for visual feedback
-- Full-screen map interface
+- Full screen map interface
 
 ![Property Details](my-app/public/screenshots/SidePanelView.png)
 *Property details panel*
@@ -22,7 +22,7 @@ An interactive map for to explore property parcels and view detailed information
 # Install dependencies
 npm install
 
-# Add your Mapbox token to .env.local
+# Add the Mapbox token to .env.local
 NEXT_PUBLIC_MAPBOX_TOKEN=your_token_here
 
 # Run dev server
@@ -51,7 +51,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 **Next.js + TypeScript** : Frontend framework
 
-**Material-UI** : UI components
+**Material UI** : UI components
 
 ## How It Works
 
